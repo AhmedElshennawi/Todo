@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GIS Drawing Kanban</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>GIS Drawing Progress Tracker</h1>
+      <div class="controls">
+        <button id="exportBtn">Export JSON</button>
+        <label class="import-btn">
+          Import JSON <input type="file" id="importBtn" accept=".json" />
+        </label>
+        <button id="addDrawingBtn">Add Drawing</button>
+        <label class="csv-import-btn">
+          Import CSV
+          <input type="file" id="csvImportBtn" accept=".csv" />
+        </label>
+        <button id="clearAllBtn">Clear All</button>
+      </div>
+    </header>
+
+    <!-- Add Drawing Modal -->
+    <div id="drawingModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Add New Drawing</h3>
+        <input
+          type="text"
+          id="newDrawingNumber"
+          placeholder="e.g., 421-B124-XX001"
+        />
+        <button id="confirmAddBtn">Add</button>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Edit Task</h3>
+        <div class="form-group">
+          <label>Drawing Number:</label>
+          <input type="text" id="editDrawing" />
+        </div>
+        <div class="form-group">
+          <label>Assigned To:</label>
+          <select id="editAssigned">
+            <option value="">Unassigned</option>
+            <option>Ahmed Elshennawi</option>
+            <option>Mohammed Salah</option>
+            <option>Mohammed Elthaqib</option>
+            <option>Reda Marawany</option>
+            <option>Basmah Alrowaily</option>
+            <option>Malak Abduljawad</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Start Date:</label>
+          <input type="date" id="editStartDate" />
+        </div>
+        <button id="confirmEditBtn">Save</button>
+      </div>
+    </div>
+
+    <div class="kanban-board">
+      <div class="column" id="todo">
+        <h2>To Do (<span id="todo-count">0</span>)</h2>
+        <div class="tasks" id="todo-tasks"></div>
+      </div>
+
+      <div class="column" id="progress">
+        <h2>In Progress (<span id="progress-count">0</span>)</h2>
+        <div class="tasks" id="progress-tasks"></div>
+      </div>
+
+      <div class="column" id="done">
+        <h2>Done (<span id="done-count">0</span>)</h2>
+        <div class="tasks" id="done-tasks"></div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
